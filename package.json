@@ -1,16 +1,15 @@
 {
-  "name": "bytez-api",
+  "name": "bytez-image-api",
   "version": "1.0.0",
-  "description": "A simple GET API using Bytez FLUX.1-dev model",
+  "description": "Bytez Stable Diffusion XL API",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Denish",
-  "license": "MIT",
   "dependencies": {
     "bytez.js": "^1.0.0",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   }
 }
