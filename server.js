@@ -1,16 +1,21 @@
 // server.js
 import express from "express";
 import Bytez from "bytez.js";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Initialize Bytez SDK
+// Enable CORS so you can call from browser/web
+app.use(cors());
+app.use(express.json());
+
+// Bytez SDK
 const key = process.env.BYTEZ_KEY || "7821c04b5a153752ba8fec4a107254d5";
 const sdk = new Bytez(key);
-const model = sdk.model("black-forest-labs/FLUX.1-dev");
+const model = sdk.model("stabilityai/stable-diffusion-xl-base-1.0");
 
-// GET API route
+// GET API
 // Example: /api/generate?prompt=A+cat+in+a+wizard+hat
 app.get("/api/generate", async (req, res) => {
   try {
@@ -29,7 +34,7 @@ app.get("/api/generate", async (req, res) => {
 
 // Test route
 app.get("/", (req, res) => {
-  res.send("Bytez GET API is running!");
+  res.send("Bytez Text-to-Image API is running!");
 });
 
 app.listen(PORT, () => {
